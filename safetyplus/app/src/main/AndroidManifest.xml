@@ -16,8 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Gengo" />
-        <activity android:name=".Oil_Seeds" />
+        <activity android:name=".Language" />
+        <activity android:name=".Oil" />
         <activity android:name=".Drive"></activity>
     </application>
 

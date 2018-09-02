@@ -15,7 +15,7 @@ class Language : AppCompatActivity() {
         buttonJp.setOnClickListener {
             if (flag) {
                 // flagがtrueの時
-                checkImage.setImageResource(R.drawable.checkMark)
+                check.setImageResource(R.drawable.check)
                 flag = false
             }
 
