@@ -3,14 +3,17 @@ package com.example.ruico.safetyplus
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ImageButton
 import kotlinx.android.synthetic.main.activity_main.*
+import android.preference.PreferenceManager
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+        val oil: String = sharedPreferences.getString("OilCode", "")
+        textView.setText(oil)
 
         buttonLanguage.setOnClickListener {
             val intent = Intent(this, Language::class.java)

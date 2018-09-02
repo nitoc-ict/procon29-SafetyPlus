@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:background="#00000000"
         android:layout_centerHorizontal="true"
-        android:layout_above="@id/drive"
+        android:layout_above="@id/buttonDrive"
         android:layout_marginBottom="10dp"
         app:srcCompat="@drawable/logo" />
 
@@ -48,6 +48,14 @@
         android:layout_centerInParent="true"
         android:background="#00000000"
         app:srcCompat="@drawable/drive" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="" />
 
 
 </RelativeLayout>

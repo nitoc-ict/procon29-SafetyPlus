@@ -3,6 +3,7 @@ package com.example.ruico.safetyplus
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_oil.*
+import android.preference.PreferenceManager
 
 class Oil : AppCompatActivity() {
 
@@ -10,16 +11,25 @@ class Oil : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_oil)
 
+        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+        val editor = sharedPreferences.edit()
+
         buttonRegular.setOnClickListener{
-            finishActivity(1)
+            editor.putString("OilCode", "Regular")
+            editor.commit()
+            finish()
         }
 
         buttonHighOctane.setOnClickListener{
-            finishActivity(2)
+            editor.putString("OilCode", "HighOctane")
+            editor.commit()
+            finish()
         }
 
         buttonDiesel.setOnClickListener{
-            finishActivity(3)
+            editor.putString("OilCode", "Diesel")
+            editor.commit()
+            finish()
         }
     }
 
