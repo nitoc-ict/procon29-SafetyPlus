@@ -14,14 +14,14 @@ class MainActivity : AppCompatActivity() {
 
         val button: Button = findViewById(R.id.button)
         button.setOnClickListener {
-            val intent = Intent(this, Gengo::class.java)
+            val intent = Intent(this, Language::class.java)
             startActivity(intent)
 
 
         }
         val button9: Button = findViewById(R.id.button9)
         button9.setOnClickListener{
-            val intent = Intent( this, Oil_Seeds::class.java)
+            val intent = Intent( this, Oil::class.java)
             startActivity(intent)
 
         }
