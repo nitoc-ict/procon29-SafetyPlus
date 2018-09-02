@@ -13,9 +13,9 @@
 
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/driveStart"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/drive1" />
+            app:srcCompat="@drawable/driveStart" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
