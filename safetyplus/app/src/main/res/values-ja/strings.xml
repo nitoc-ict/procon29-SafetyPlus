@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_settings">設定</string>
+    <string name="hello_world">はろーわーるど！</string>
+
+    <string name="Regular">レギュラー</string>
+    <string name="HighOctane">ハイオク</string>
+    <string name="Diesel">軽油</string>
+</resources>

@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
-        val oil: String = sharedPreferences.getString("OilCode", "")
+        val oil: String = sharedPreferences.getString("OilCode", "Regular")
         textView.text = oil
 
         buttonLanguage.setOnClickListener {
@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
-        val oil: String = sharedPreferences.getString("OilCode", "")
+        val oil: String = sharedPreferences.getString("OilCode", "Regular")
         textView.text = oil
     }
 }
