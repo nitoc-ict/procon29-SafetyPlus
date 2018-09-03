@@ -3,6 +3,7 @@ package com.example.ruico.safetyplus
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_language.*
+import java.util.*
 
 class Language : AppCompatActivity() {
 
@@ -10,15 +11,11 @@ class Language : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_language)
 
-        var flag = false
-
         buttonJp.setOnClickListener {
-            if (flag) {
-                // flagがtrueの時
-                check.setImageResource(R.drawable.check)
-                flag = false
-            }
+            Locale.setDefault(Locale.JAPAN)
 
+
+            finish()
         }
     }
 }

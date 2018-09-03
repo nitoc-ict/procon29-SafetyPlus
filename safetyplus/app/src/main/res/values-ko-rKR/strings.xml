@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_settings">설정</string>
+    <string name="hello_world">여보세요, 세계!</string>
+
+    <string name="Regular">레귤러</string>
+    <string name="HighOctane">옥탄</string>
+    <string name="Diesel">디젤</string>
+</resources>
