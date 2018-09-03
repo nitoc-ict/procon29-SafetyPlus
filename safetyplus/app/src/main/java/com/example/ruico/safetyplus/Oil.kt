@@ -16,19 +16,19 @@ class Oil : AppCompatActivity() {
 
         buttonRegular.setOnClickListener{
             editor.putString("OilCode", "Regular")
-            editor.commit()
+            editor.apply()
             finish()
         }
 
         buttonHighOctane.setOnClickListener{
             editor.putString("OilCode", "HighOctane")
-            editor.commit()
+            editor.apply()
             finish()
         }
 
         buttonDiesel.setOnClickListener{
             editor.putString("OilCode", "Diesel")
-            editor.commit()
+            editor.apply()
             finish()
         }
     }
