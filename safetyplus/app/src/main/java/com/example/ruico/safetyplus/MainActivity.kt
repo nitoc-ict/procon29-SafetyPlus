@@ -4,16 +4,12 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_main.*
-import android.preference.PreferenceManager
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
-        textView.text = sharedPreferences.getString("OilCode", getString(R.string.Regular))
-        textView2.text = getString(R.string.hello_world)
 
         buttonLanguage.setOnClickListener {
             val intent = Intent(this, Language::class.java)
@@ -29,13 +25,5 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, Drive::class.java)
             startActivity(intent)
         }
-    }
-
-    override fun onResume() {
-        super.onResume()
-
-        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
-        textView.text = sharedPreferences.getString("OilCode", getString(R.string.Regular))
-        textView2.text = getString(R.string.hello_world)
     }
 }
