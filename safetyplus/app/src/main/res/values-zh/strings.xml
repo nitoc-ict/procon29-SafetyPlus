@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_settings">設置</string>
+    <string name="hello_world">你好世界</string>
+
+    <string name="Regular">普通汽油</string>
+    <string name="HighOctane">高辛烷值</string>
+    <string name="Diesel">輕油</string>
+</resources>

@@ -22,9 +22,7 @@
             android:background="#f6f6f6"
             android:text="@string/japanese"
             android:gravity="start|center_vertical"
-            android:textSize="20sp"
-            tools:layout_editor_absoluteX="21dp"
-            tools:layout_editor_absoluteY="58dp" />
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/buttonKr"
@@ -36,13 +34,11 @@
             android:background="#f6f6f6"
             android:text="@string/korean"
             android:gravity="start|center_vertical"
-            android:textSize="20sp"
-            tools:layout_editor_absoluteX="21dp"
-            tools:layout_editor_absoluteY="133dp" />
+            android:textSize="20sp" />
 
 
         <Button
-            android:id="@+id/buttonCh"
+            android:id="@+id/buttonZh"
             android:layout_width="match_parent"
             android:layout_height="68dp"
             android:layout_marginBottom="5dp"
@@ -51,9 +47,7 @@
             android:background="#f6f6f6"
             android:text="@string/chinese"
             android:gravity="start|center_vertical"
-            android:textSize="20sp"
-            tools:layout_editor_absoluteX="21dp"
-            tools:layout_editor_absoluteY="234dp" />
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/buttonEn"
@@ -65,9 +59,7 @@
             android:background="#f6f6f6"
             android:text="@string/english"
             android:gravity="start|center_vertical"
-            android:textSize="20sp"
-            tools:layout_editor_absoluteX="21dp"
-            tools:layout_editor_absoluteY="331dp" />
+            android:textSize="20sp" />
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

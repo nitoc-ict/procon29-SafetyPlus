@@ -8,6 +8,7 @@
     tools:context=".MainActivity">
 
     <ImageView
+        android:contentDescription="@string/app_name"
         android:id="@+id/Logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -18,30 +19,31 @@
         app:srcCompat="@drawable/logo" />
 
     <ImageButton
+        android:contentDescription="@string/hello_world"
         android:id="@+id/buttonLanguage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_toLeftOf="@id/buttonOil"
+        android:layout_toStartOf="@id/buttonOil"
         android:layout_marginBottom="10dp"
         android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
         android:background="#00000000"
         app:srcCompat="@drawable/language" />
 
     <ImageButton
+        android:contentDescription="@string/hello_world"
         android:id="@+id/buttonOil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_marginBottom="10dp"
         android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
         android:background="#00000000"
         app:srcCompat="@drawable/oil" />
 
     <ImageButton
+        android:contentDescription="@string/hello_world"
         android:id="@+id/buttonDrive"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -64,6 +66,5 @@
         android:layout_below="@+id/textView"
         android:layout_centerHorizontal="true"
         android:text="@string/hello_world" />
-
 
 </RelativeLayout>

@@ -17,7 +17,7 @@ class Language : AppCompatActivity() {
             finish()
         }
 
-        buttonCh.setOnClickListener {
+        buttonZh.setOnClickListener {
             Locale.setDefault(Locale.CHINA)
 
             finish()
