@@ -18,7 +18,7 @@
         </activity>
         <activity android:name=".Language" />
         <activity android:name=".Oil" />
-        <activity android:name=".Drive"></activity>
+        <activity android:name=".Drive" />
     </application>
 
 </manifest>

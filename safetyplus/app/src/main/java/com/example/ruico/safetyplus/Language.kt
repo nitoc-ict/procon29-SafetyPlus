@@ -14,6 +14,23 @@ class Language : AppCompatActivity() {
         buttonJp.setOnClickListener {
             Locale.setDefault(Locale.JAPAN)
 
+            finish()
+        }
+
+        buttonCh.setOnClickListener {
+            Locale.setDefault(Locale.CHINA)
+
+            finish()
+        }
+
+        buttonKr.setOnClickListener{
+            Locale.setDefault(Locale.KOREA)
+
+            finish()
+        }
+
+        buttonEn.setOnClickListener {
+            Locale.setDefault(Locale.ENGLISH)
 
             finish()
         }
