@@ -27,14 +27,13 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="vertical" >
-
             <ImageView
-                android:id="@+id/overtaking"
+                android:id="@+id/stop"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:contentDescription="@string/app_name"
-                app:srcCompat="@drawable/overtaking" />
+                app:srcCompat="@drawable/stop" />
 
             <ImageView
                 android:id="@+id/slow"
@@ -45,12 +44,12 @@
                 app:srcCompat="@drawable/slow" />
 
             <ImageView
-                android:id="@+id/stop"
+                android:id="@+id/overtaking"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:contentDescription="@string/app_name"
-                app:srcCompat="@drawable/stop" />
+                app:srcCompat="@drawable/overtaking" />
 
         </LinearLayout>
 
@@ -79,7 +78,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="fitXY"
-        android:visibility="visible"
+        android:visibility="invisible"
         android:contentDescription="@string/app_name"
         app:srcCompat="@drawable/regular" />
 
