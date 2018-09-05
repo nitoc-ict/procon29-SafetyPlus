@@ -15,19 +15,19 @@ class Oil : AppCompatActivity() {
         val editor = sharedPreferences.edit()
 
         buttonRegular.setOnClickListener{
-            editor.putString("OilCode", "Regular")
+            editor.putInt("OilCode", R.drawable.regular)
             editor.apply()
             finish()
         }
 
         buttonHighOctane.setOnClickListener{
-            editor.putString("OilCode", "HighOctane")
+            editor.putInt("OilCode", R.drawable.highoctane)
             editor.apply()
             finish()
         }
 
         buttonDiesel.setOnClickListener{
-            editor.putString("OilCode", "Diesel")
+            editor.putInt("OilCode", R.drawable.diesel)
             editor.apply()
             finish()
         }
