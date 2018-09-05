@@ -58,6 +58,7 @@
             android:id="@+id/turnLeft"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:scaleType="fitXY"
             android:layout_weight="0"
             android:contentDescription="@string/app_name"
             app:srcCompat="@drawable/turn_left" />
@@ -66,6 +67,7 @@
             android:id="@+id/turnRight"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:scaleType="fitXY"
             android:layout_weight="3"
             android:contentDescription="@string/app_name"
             app:srcCompat="@drawable/turn_right" />
