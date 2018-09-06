@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.preference.PreferenceManager
 import android.view.View
+import android.widget.LinearLayout
 import kotlinx.android.synthetic.main.activity_drive.*
 import java.io.InputStream
 import java.util.*
@@ -36,7 +37,6 @@ class Drive : AppCompatActivity() {
         Thread(object : Runnable {
             private var len: Int = 0
             private var buf = ByteArray(256)
-            private lateinit var stat: Array<String>
             override fun run() {
                 try {
                     mDevice = mBluetoothAdapter.getRemoteDevice(address)
@@ -52,10 +52,12 @@ class Drive : AppCompatActivity() {
                     Arrays.fill(buf,0.toByte())
                     len = inputStream.read(buf)
                     val str = String(buf)
-                    stat = str.split(",".toRegex(), 3).toTypedArray()
+                    val stat = str.split(",".toRegex(), 3).toTypedArray()
 
                     handler.post {
                         fuelListener(stat[0])
+                        turnListener(stat[1])
+                        signListener(stat[2], stat[1])
                     }
                     try {
                         Thread.sleep(100)
@@ -84,6 +86,86 @@ class Drive : AppCompatActivity() {
         }
         else if (str.equals("null", false) && OilNozzle.visibility == View.VISIBLE){
             OilNozzle.visibility = View.INVISIBLE
+        }
+    }
+
+    fun turnListener(str: String) {
+        val lpLeft = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT)
+        val lpRight = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT)
+        lpLeft.weight = 0f
+        lpRight.weight = 0f
+        if (str.equals("left", false) && lpLeft.weight == 0f){
+            lpLeft.weight = 3f
+            lpRight.weight = 0f
+        }
+        else if (str.equals("right", false) && lpRight.weight == 0f){
+            lpRight.weight = 3f
+            lpLeft.weight = 0f
+        }
+        else if (str.equals("null", false) && (lpRight.weight + lpLeft.weight) != 0f){
+            lpRight.weight = 0f
+            lpLeft.weight = 0f
+        }
+
+        turnRight.layoutParams = lpRight
+        turnLeft.layoutParams = lpLeft
+    }
+
+    fun signListener(str: String, turn: String){
+        val sign = str.split(',')
+        val lpStop = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT)
+        val lpSlow = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT)
+        val lpOver = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT)
+        val turnStop = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 0)
+        val turnSlow = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 0)
+        val turnOver = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 0)
+
+        lpStop.weight = 0f
+        turnStop.weight = 0f
+        lpSlow.weight = 0f
+        turnStop.weight = 0f
+        lpOver.weight = 0f
+        turnOver.weight = 0f
+
+        if (sign[0].equals("stop", false) && (lpStop.weight + turnStop.weight) == 0f){
+            lpStop.weight = 1f
+            turnStop.weight = 1f
+        }
+        else if (sign[0].equals("null", false) && (lpStop.weight + turnStop.weight) != 0f){
+            lpStop.weight = 0f
+            turnStop.weight = 0f
+        }
+
+        if (sign[1].equals("slow", false) && (lpSlow.weight + turnSlow.weight) == 0f){
+            lpSlow.weight = 1f
+            turnSlow.weight = 1f
+        }
+        else if (sign[1].equals("null", false) && (lpSlow.weight + turnSlow.weight) != 0f){
+            lpSlow.weight = 0f
+            turnSlow.weight = 0f
+        }
+
+        if (sign[2].equals("over", false) && (lpOver.weight + turnOver.weight) == 0f){
+            lpOver.weight = 1f
+            turnOver.weight = 1f
+        }
+        else if (sign[2].equals("null", false) && (lpOver.weight + turnOver.weight) != 0f){
+            lpOver.weight = 0f
+            turnOver.weight = 0f
+        }
+
+
+        if (turn.equals("null",false)){
+            signLayout.orientation = LinearLayout.HORIZONTAL
+            stop.layoutParams = lpStop
+            slow.layoutParams = lpSlow
+            overtaking.layoutParams = lpOver
+        }
+        else {
+            signLayout.orientation = LinearLayout.VERTICAL
+            stop.layoutParams = turnStop
+            slow.layoutParams = turnSlow
+            overtaking.layoutParams = turnOver
         }
     }
 }
