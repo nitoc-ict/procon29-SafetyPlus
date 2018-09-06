@@ -120,12 +120,23 @@ class Drive : AppCompatActivity() {
         val turnSlow = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 0)
         val turnOver = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 0)
 
+        val lpSign = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT)
+
         lpStop.weight = 0f
         turnStop.weight = 0f
         lpSlow.weight = 0f
         turnStop.weight = 0f
         lpOver.weight = 0f
         turnOver.weight = 0f
+
+        lpSign.weight = 0f
+
+        if (str.equals("null,null,null,", false) && lpSign.weight != 0f){
+            lpSign.weight = 0f
+        }
+        else if (lpSign.weight != 1f){
+            lpSign.weight = 1f
+        }
 
         if (sign[0].equals("stop", false) && (lpStop.weight + turnStop.weight) == 0f){
             lpStop.weight = 1f
@@ -154,6 +165,8 @@ class Drive : AppCompatActivity() {
             turnOver.weight = 0f
         }
 
+
+        signLayout.layoutParams = lpSign
 
         if (turn.equals("null",false)){
             signLayout.orientation = LinearLayout.HORIZONTAL
