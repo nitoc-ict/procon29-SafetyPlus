@@ -68,29 +68,6 @@ class Drive : AppCompatActivity() {
                 }
             }
         }).start()
-
-        var count = 0
-        Thread(object : Runnable {
-            override fun run() {
-                while (true) {
-                    if(count >= 60){
-                        count = 0
-                    }
-                    else {
-                        count++
-                    }
-                    handler.post {
-                        attentionListener(count)
-                    }
-                    try {
-                        Thread.sleep(100)
-                    } catch (e: InterruptedException) {
-                        e.printStackTrace()
-                    }
-
-                }
-            }
-        }).start()
     }
 
     public override fun onDestroy() {
@@ -103,16 +80,6 @@ class Drive : AppCompatActivity() {
         }
     }
 
-    fun attentionListener(count: Int){
-
-        if (count >= 60) {
-            attention.visibility = View.INVISIBLE
-        }
-
-        else if (count >= 50) {
-            attention.visibility = View.VISIBLE
-        }
-    }
     fun fuelListener(str: String) {
         if (str.equals("refuel", false) && OilNozzle.visibility == View.INVISIBLE){
             OilNozzle.visibility = View.VISIBLE
