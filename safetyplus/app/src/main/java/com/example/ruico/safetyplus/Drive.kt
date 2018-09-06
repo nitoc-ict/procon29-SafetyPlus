@@ -29,7 +29,6 @@ class Drive : AppCompatActivity() {
 
         val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
         val initOil: Int = R.drawable.regular
-        var count = 0
 
         OilNozzle.setImageResource(sharedPreferences.getInt("OilCode", initOil))
 
@@ -56,12 +55,32 @@ class Drive : AppCompatActivity() {
                     val stat = str.split(",".toRegex(), 3).toTypedArray()
 
                     handler.post {
-                        if (count == 6)count = 0
-                        else count += 1
-                        attentionListener(count)
                         fuelListener(stat[0])
                         turnListener(stat[1])
                         signListener(stat[2], stat[1])
+                    }
+                    try {
+                        Thread.sleep(100)
+                    } catch (e: InterruptedException) {
+                        e.printStackTrace()
+                    }
+
+                }
+            }
+        }).start()
+
+        var count = 0
+        Thread(object : Runnable {
+            override fun run() {
+                while (true) {
+                    if(count >= 60){
+                        count = 0
+                    }
+                    else {
+                        count++
+                    }
+                    handler.post {
+                        attentionListener(count)
                     }
                     try {
                         Thread.sleep(100)
@@ -86,11 +105,11 @@ class Drive : AppCompatActivity() {
 
     fun attentionListener(count: Int){
 
-        if (count >= 6) {
+        if (count >= 60) {
             attention.visibility = View.INVISIBLE
         }
 
-        else if (count >= 5) {
+        else if (count >= 50) {
             attention.visibility = View.VISIBLE
         }
     }
