@@ -28,7 +28,8 @@ class Drive : AppCompatActivity() {
         setContentView(R.layout.activity_drive)
 
         val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
-        val initOil:Int = R.drawable.regular
+        val initOil: Int = R.drawable.regular
+        var count = 0
 
         OilNozzle.setImageResource(sharedPreferences.getInt("OilCode", initOil))
 
@@ -55,6 +56,9 @@ class Drive : AppCompatActivity() {
                     val stat = str.split(",".toRegex(), 3).toTypedArray()
 
                     handler.post {
+                        if (count == 6)count = 0
+                        else count += 1
+                        attentionListener(count)
                         fuelListener(stat[0])
                         turnListener(stat[1])
                         signListener(stat[2], stat[1])
@@ -76,10 +80,20 @@ class Drive : AppCompatActivity() {
             serverSocket.close()
         }
         finally {
-
+            finish()
         }
     }
 
+    fun attentionListener(count: Int){
+
+        if (count >= 6) {
+            attention.visibility = View.INVISIBLE
+        }
+
+        else if (count >= 5) {
+            attention.visibility = View.VISIBLE
+        }
+    }
     fun fuelListener(str: String) {
         if (str.equals("refuel", false) && OilNozzle.visibility == View.INVISIBLE){
             OilNozzle.visibility = View.VISIBLE
@@ -131,10 +145,10 @@ class Drive : AppCompatActivity() {
 
         lpSign.weight = 0f
 
-        if (str.equals("null,null,null,", false) && lpSign.weight != 0f){
+        if (sign[0].equals("null", false) && sign[1].equals("null", false) && sign[2].equals("null", false)){
             lpSign.weight = 0f
         }
-        else if (lpSign.weight != 1f){
+        else {
             lpSign.weight = 1f
         }
 
