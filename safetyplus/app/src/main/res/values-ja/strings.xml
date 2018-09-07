@@ -6,4 +6,5 @@
     <string name="Regular">レギュラー</string>
     <string name="HighOctane">ハイオク</string>
     <string name="Diesel">軽油</string>
+    <string name="attention">注意して運転しましょう</string>
 </resources>

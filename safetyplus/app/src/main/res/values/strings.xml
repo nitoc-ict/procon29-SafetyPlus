@@ -11,4 +11,6 @@
     <string name="Regular">Regular</string>
     <string name="HighOctane">HighOctane</string>
     <string name="Diesel">Diesel</string>
+
+    <string name="attention">Drive carefully.</string>
 </resources>

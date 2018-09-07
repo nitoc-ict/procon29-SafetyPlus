@@ -6,4 +6,5 @@
     <string name="Regular">普通汽油</string>
     <string name="HighOctane">高辛烷值</string>
     <string name="Diesel">輕油</string>
+    <string name="attention">小心驾驶</string>
 </resources>

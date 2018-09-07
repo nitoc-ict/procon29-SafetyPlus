@@ -6,4 +6,6 @@
     <string name="Regular">레귤러</string>
     <string name="HighOctane">옥탄</string>
     <string name="Diesel">디젤</string>
+    <string name="attention">신중하게 운전</string>
+
 </resources>
