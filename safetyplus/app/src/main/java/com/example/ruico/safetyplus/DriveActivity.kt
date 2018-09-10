@@ -79,6 +79,7 @@ class DriveActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
     public override fun onDestroy() {
         super.onDestroy()
+        tts.finish()
         try {
             serverSocket.close()
         }

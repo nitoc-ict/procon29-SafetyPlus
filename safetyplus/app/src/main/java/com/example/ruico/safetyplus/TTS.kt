@@ -19,6 +19,10 @@ class TTS (context: Context, listener: TextToSpeech.OnInitListener){
     fun say(str: String){
         tts.speak(str, TextToSpeech.QUEUE_FLUSH, null, null)
     }
+
+    fun finish(){
+        tts.shutdown()
+    }
 }
 
 
