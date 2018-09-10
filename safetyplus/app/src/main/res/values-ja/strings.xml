@@ -7,4 +7,5 @@
     <string name="HighOctane">ハイオク</string>
     <string name="Diesel">軽油</string>
     <string name="attention">注意して運転しましょう</string>
+    <string name="turn">速度を落として慎重に曲がりましょう</string>
 </resources>

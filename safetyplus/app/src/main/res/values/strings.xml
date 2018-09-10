@@ -13,4 +13,6 @@
     <string name="Diesel">Diesel</string>
 
     <string name="attention">Drive carefully.</string>
+
+    <string name="turn">slow down. turn carefully</string>
 </resources>

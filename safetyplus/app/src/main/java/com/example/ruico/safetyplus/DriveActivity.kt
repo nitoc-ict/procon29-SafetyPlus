@@ -102,10 +102,12 @@ class DriveActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         lpLeft.weight = 0f
         lpRight.weight = 0f
         if (str.equals("left", false) && lpLeft.weight == 0f){
+            tts.say(getString(R.string.turn))
             lpLeft.weight = 3f
             lpRight.weight = 0f
         }
         else if (str.equals("right", false) && lpRight.weight == 0f){
+            tts.say(getString(R.string.turn))
             lpRight.weight = 3f
             lpLeft.weight = 0f
         }

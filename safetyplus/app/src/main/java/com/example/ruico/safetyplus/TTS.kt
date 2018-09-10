@@ -16,7 +16,7 @@ class TTS (context: Context, listener: TextToSpeech.OnInitListener){
         }
     }
 
-    fun speach(str: String){
+    fun say(str: String){
         tts.speak(str, TextToSpeech.QUEUE_FLUSH, null, null)
     }
 }
