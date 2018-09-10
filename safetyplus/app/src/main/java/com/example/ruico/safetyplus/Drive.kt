@@ -8,13 +8,15 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.preference.PreferenceManager
+import android.speech.tts.TextToSpeech
 import android.view.View
 import android.widget.LinearLayout
 import kotlinx.android.synthetic.main.activity_drive.*
 import java.io.InputStream
 import java.util.*
 
-class Drive : AppCompatActivity() {
+class Drive : AppCompatActivity(), TextToSpeech.OnInitListener {
+
     private val uuid = UUID.fromString("a11f255d-ea48-5aa2-1a34-3b1f7a762d13")
     private val mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
     private lateinit var inputStream: InputStream
@@ -22,6 +24,7 @@ class Drive : AppCompatActivity() {
     private lateinit var serverSocket: BluetoothServerSocket
     private lateinit var mDevice: BluetoothDevice
     private var handler = Handler()
+    private lateinit var tts: TTS
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,7 +32,7 @@ class Drive : AppCompatActivity() {
 
         val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
         val initOil: Int = R.drawable.regular
-
+        tts = TTS(this, this)
         OilNozzle.setImageResource(sharedPreferences.getInt("OilCode", initOil))
 
         val address = "B8:27:EB:3D:B0:67"
@@ -68,6 +71,10 @@ class Drive : AppCompatActivity() {
                 }
             }
         }).start()
+    }
+
+    override fun onInit(status: Int) {
+        tts.checkInit(status)
     }
 
     public override fun onDestroy() {
