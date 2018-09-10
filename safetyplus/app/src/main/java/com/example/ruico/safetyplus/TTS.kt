@@ -9,7 +9,7 @@ class TTS (context: Context, listener: TextToSpeech.OnInitListener){
 
     fun checkInit(status: Int) {
         if (TextToSpeech.SUCCESS == status) {
-            val locale = Locale.ENGLISH
+            val locale = Locale.getDefault()
             if (tts.isLanguageAvailable(locale) >= TextToSpeech.LANG_AVAILABLE) {
                 tts.language = locale
             }
