@@ -20,8 +20,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Oil" android:screenOrientation="landscape"/>
-        <activity android:name=".Drive" android:screenOrientation="landscape"/>
+        <activity android:name=".OilActivity" android:screenOrientation="landscape"/>
+        <activity android:name=".DriveActivity" android:screenOrientation="landscape"/>
     </application>
 
 </manifest>

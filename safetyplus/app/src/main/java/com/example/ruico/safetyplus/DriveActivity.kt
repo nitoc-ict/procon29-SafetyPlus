@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.activity_drive.*
 import java.io.InputStream
 import java.util.*
 
-class Drive : AppCompatActivity(), TextToSpeech.OnInitListener {
+class DriveActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
     private val uuid = UUID.fromString("a11f255d-ea48-5aa2-1a34-3b1f7a762d13")
     private val mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
