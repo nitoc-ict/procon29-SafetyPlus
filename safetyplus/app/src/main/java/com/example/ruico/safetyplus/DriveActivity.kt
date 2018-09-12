@@ -2,7 +2,6 @@ package com.example.ruico.safetyplus
 
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothDevice
-import android.bluetooth.BluetoothServerSocket
 import android.bluetooth.BluetoothSocket
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -17,18 +16,16 @@ import java.util.*
 
 class DriveActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
-    private val uuid = UUID.fromString("a11f255d-ea48-5aa2-1a34-3b1f7a762d13")
-    private val mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
-    private lateinit var inputStream: InputStream
     private var socket: BluetoothSocket? = null
-    private lateinit var serverSocket: BluetoothServerSocket
-    private lateinit var mDevice: BluetoothDevice
-    private var handler = Handler()
-    private lateinit var tts: TTS
+    private var tts: TTS? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_drive)
+
+        val uuid = UUID.fromString("a11f255d-ea48-5aa2-1a34-3b1f7a762d13")
+        val mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
+        val handler = Handler()
 
         val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
         val initOil: Int = R.drawable.regular
@@ -37,13 +34,15 @@ class DriveActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
         val address = "B8:27:EB:3D:B0:67"
 
-        Thread(object : Runnable {
+        val btThread = Thread(object : Runnable {
+            private var inputStream: InputStream? = null
+            private var mDevice: BluetoothDevice? = null
             private var len: Int = 0
             private var buf = ByteArray(256)
             override fun run() {
                 try {
                     mDevice = mBluetoothAdapter.getRemoteDevice(address)
-                    socket = mDevice.createRfcommSocketToServiceRecord(uuid)
+                    socket = mDevice!!.createRfcommSocketToServiceRecord(uuid)
                     socket!!.connect()
                     inputStream = socket!!.inputStream
                 }
@@ -53,7 +52,7 @@ class DriveActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
                 while (true) {
                     Arrays.fill(buf,0.toByte())
-                    len = inputStream.read(buf)
+                    len = inputStream!!.read(buf)
                     val str = String(buf)
                     val stat = str.split(",".toRegex(), 3).toTypedArray()
 
@@ -70,22 +69,19 @@ class DriveActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
                 }
             }
-        }).start()
+        })
+
+        btThread.start()
     }
 
     override fun onInit(status: Int) {
-        tts.checkInit(status)
+        tts!!.checkInit(status)
     }
 
-    public override fun onDestroy() {
-        super.onDestroy()
-        tts.finish()
-        try {
-            serverSocket.close()
-        }
-        finally {
-            finish()
-        }
+    public override fun onPause() {
+        super.onPause()
+        tts!!.finish()
+        socket!!.close()
     }
 
     fun fuelListener(str: String) {
@@ -103,12 +99,12 @@ class DriveActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         lpLeft.weight = 0f
         lpRight.weight = 0f
         if (str.equals("left", false) && lpLeft.weight == 0f){
-            tts.say(getString(R.string.turn))
+            tts!!.say(getString(R.string.turn))
             lpLeft.weight = 3f
             lpRight.weight = 0f
         }
         else if (str.equals("right", false) && lpRight.weight == 0f){
-            tts.say(getString(R.string.turn))
+            tts!!.say(getString(R.string.turn))
             lpRight.weight = 3f
             lpLeft.weight = 0f
         }
