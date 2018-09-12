@@ -15,14 +15,16 @@ class OilActivity : AppCompatActivity() {
         val editor = sharedPreferences.edit()
         val selectedOil = sharedPreferences.getInt("OilCode", R.drawable.regular)
 
-        if (selectedOil == R.drawable.regular){
-            buttonRegular.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.check,0)
-        }
-        else if (selectedOil == R.drawable.highoctane){
-            buttonHighOctane.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.check,0)
-        }
-        else if (selectedOil == R.drawable.diesel){
-            buttonDiesel.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.check,0)
+        when (selectedOil) {
+            R.drawable.regular -> {
+                buttonRegular.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.check, 0)
+            }
+            R.drawable.highoctane -> {
+                buttonHighOctane.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.check, 0)
+            }
+            R.drawable.diesel -> {
+                buttonDiesel.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.check, 0)
+            }
         }
         buttonRegular.setOnClickListener{
             editor.putInt("OilCode", R.drawable.regular)
