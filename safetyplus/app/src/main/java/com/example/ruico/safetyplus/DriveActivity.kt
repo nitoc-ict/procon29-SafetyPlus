@@ -78,10 +78,14 @@ class DriveActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         tts!!.checkInit(status)
     }
 
-    public override fun onPause() {
+    override fun onPause() {
         super.onPause()
-        tts!!.finish()
-        socket!!.close()
+        try {
+            socket!!.close()
+        }
+        finally {
+            tts!!.finish()
+        }
     }
 
     fun fuelListener(str: String) {
