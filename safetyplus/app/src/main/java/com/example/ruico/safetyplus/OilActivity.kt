@@ -13,33 +13,60 @@ class OilActivity : AppCompatActivity() {
 
         val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
         val editor = sharedPreferences.edit()
-        val selectedOil = sharedPreferences.getInt("OilCode", R.drawable.regular)
+        val selectedOil = sharedPreferences.getInt(
+                "OilCode",
+                R.drawable.regular
+        )
 
         when (selectedOil) {
             R.drawable.regular -> {
-                buttonRegular.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.check, 0)
+                buttonRegular.setCompoundDrawablesRelativeWithIntrinsicBounds(
+                        0,
+                        0,
+                        R.drawable.check,
+                        0
+                )
             }
             R.drawable.highoctane -> {
-                buttonHighOctane.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.check, 0)
+                buttonHighOctane.setCompoundDrawablesRelativeWithIntrinsicBounds(
+                        0,
+                        0,
+                        R.drawable.check,
+                        0
+                )
             }
             R.drawable.diesel -> {
-                buttonDiesel.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.check, 0)
+                buttonDiesel.setCompoundDrawablesRelativeWithIntrinsicBounds(
+                        0,
+                        0,
+                        R.drawable.check,
+                        0
+                )
             }
         }
-        buttonRegular.setOnClickListener{
-            editor.putInt("OilCode", R.drawable.regular)
+        buttonRegular.setOnClickListener {
+            editor.putInt(
+                    "OilCode",
+                    R.drawable.regular
+            )
             editor.apply()
             finish()
         }
 
-        buttonHighOctane.setOnClickListener{
-            editor.putInt("OilCode", R.drawable.highoctane)
+        buttonHighOctane.setOnClickListener {
+            editor.putInt(
+                    "OilCode",
+                    R.drawable.highoctane
+            )
             editor.apply()
             finish()
         }
 
-        buttonDiesel.setOnClickListener{
-            editor.putInt("OilCode", R.drawable.diesel)
+        buttonDiesel.setOnClickListener {
+            editor.putInt(
+                    "OilCode",
+                    R.drawable.diesel
+            )
             editor.apply()
             finish()
         }
