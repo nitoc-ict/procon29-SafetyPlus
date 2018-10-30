@@ -4,8 +4,14 @@ import android.content.Context
 import android.speech.tts.TextToSpeech
 import java.util.*
 
-class TTS (context: Context, listener: TextToSpeech.OnInitListener){
-    private var tts = TextToSpeech(context, listener)
+class TTS(
+    context: Context,
+    listener: TextToSpeech.OnInitListener
+) {
+    private var tts = TextToSpeech(
+            context,
+            listener
+    )
 
     fun checkInit(status: Int) {
         if (TextToSpeech.SUCCESS == status) {
@@ -16,13 +22,16 @@ class TTS (context: Context, listener: TextToSpeech.OnInitListener){
         }
     }
 
-    fun say(str: String){
-        tts.speak(str, TextToSpeech.QUEUE_FLUSH, null, null)
+    fun say(str: String) {
+        tts.speak(
+                str,
+                TextToSpeech.QUEUE_FLUSH,
+                null,
+                null
+        )
     }
 
-    fun finish(){
+    fun finish() {
         tts.shutdown()
     }
 }
-
-
