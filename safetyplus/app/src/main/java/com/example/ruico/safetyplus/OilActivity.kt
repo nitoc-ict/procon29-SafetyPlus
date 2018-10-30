@@ -44,6 +44,4 @@ class OilActivity : AppCompatActivity() {
             finish()
         }
     }
-
-
 }

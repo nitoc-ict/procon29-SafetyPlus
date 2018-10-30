@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         buttonOil.setOnClickListener{
-            val intent = Intent( this, OilActivity::class.java)
+            val intent = Intent(this, OilActivity::class.java)
             startActivity(intent)
         }
 
