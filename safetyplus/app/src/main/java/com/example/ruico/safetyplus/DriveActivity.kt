@@ -16,8 +16,8 @@ import java.util.*
 
 class DriveActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
-    private var socket: BluetoothSocket? = null
-    private var tts: TTS? = null
+    private lateinit var socket: BluetoothSocket
+    private lateinit var tts: TTS
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,11 +43,8 @@ class DriveActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
                 try {
                     mDevice = mBluetoothAdapter.getRemoteDevice(address)
                     socket = mDevice!!.createRfcommSocketToServiceRecord(uuid)
-                    socket!!.connect()
-                    inputStream = socket!!.inputStream
-                }
-                finally {
-
+                    socket.connect()
+                    inputStream = socket.inputStream
                 }
 
                 while (true) {
@@ -81,10 +78,10 @@ class DriveActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     override fun onPause() {
         super.onPause()
         try {
-            socket!!.close()
+            socket.close()
         }
         finally {
-            tts!!.finish()
+            tts.finish()
         }
     }
 
@@ -103,12 +100,12 @@ class DriveActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         lpLeft.weight = 0f
         lpRight.weight = 0f
         if (str.equals("left", false) && lpLeft.weight == 0f){
-            tts!!.say(getString(R.string.turn))
+            tts.say(getString(R.string.turn))
             lpLeft.weight = 3f
             lpRight.weight = 0f
         }
         else if (str.equals("right", false) && lpRight.weight == 0f){
-            tts!!.say(getString(R.string.turn))
+            tts.say(getString(R.string.turn))
             lpRight.weight = 3f
             lpLeft.weight = 0f
         }
