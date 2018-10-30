@@ -35,21 +35,21 @@ class DriveActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         val address = "B8:27:EB:3D:B0:67"
 
         val btThread = Thread(object : Runnable {
-            private var inputStream: InputStream? = null
-            private var mDevice: BluetoothDevice? = null
+            private lateinit var inputStream: InputStream
+            private lateinit var mDevice: BluetoothDevice
             private var len: Int = 0
             private var buf = ByteArray(256)
             override fun run() {
                 try {
                     mDevice = mBluetoothAdapter.getRemoteDevice(address)
-                    socket = mDevice!!.createRfcommSocketToServiceRecord(uuid)
+                    socket = mDevice.createRfcommSocketToServiceRecord(uuid)
                     socket.connect()
                     inputStream = socket.inputStream
                 }
 
                 while (true) {
                     Arrays.fill(buf,0.toByte())
-                    len = inputStream!!.read(buf)
+                    len = inputStream.read(buf)
                     val str = String(buf)
                     val stat = str.split(",".toRegex(), 3).toTypedArray()
 
